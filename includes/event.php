@@ -100,7 +100,7 @@ UID:$uid
 SUMMARY:".$event['event_text']."
 CATEGORIES:".$event['calname']."
 DTSTART;TZID=".$event['timezone'].":".date("Ymd\THis",$event['start_unixtime'])."
-DTEND;TZID=".$event['timezone'].":".date("Ymd\THis",$event['start_unixtime'])."
+DTEND;TZID=".$event['timezone'].":".date("Ymd\THis",$event['end_unixtime'])."
 CLASS:".$event['class']."
 ".$event['other']."
 SEQUENCE:1
