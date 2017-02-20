@@ -79,9 +79,12 @@ class Page {
 				$some_events = '';
 				foreach ($val as $cal_time => $new_val) {
 					foreach ($new_val as $new_key2 => $new_val2) {
-						if (isset($seen_events[$new_key2]) && isset($new_val2['spans_day']) && $new_val2['spans_day'] == 1){
-							$new_val2['event_text'] .= ' second instance of '.$new_key2;
+						if (isset($seen_events[$new_key2])) {
+                                        		// Include in list if we've already seen it AND
+							// (it spans more than one day OR it's a recurring event) 
+							if (($new_val2['spans_day'] != 1) && (!isset($new_val2['recur']))) {
 							continue;
+							}
 						}
 						$seen_events[$new_key2] = 1;
 						$day_events++;
@@ -1091,7 +1094,13 @@ HEREDOC;
 				#	$switch['START_DATE'] 	= localizeDate ($dateFormat_week_list, $u_start);
 					$start_date 	= localizeDate ($dateFormat_week_list, $u_start);
 					foreach ($event_times as $uid => $val) {
-						if (isset($seen_events[$uid]) && @$val['spans_day'] == 1) continue;
+						if (isset($seen_events[$uid])) {
+							// Include in list if we've already seen it AND
+							// (it spans more than one day OR it's a recurring event) 
+							if ((@$val['spans_day'] != 1) && (!isset($val['recur']))) {
+								continue;
+							}
+						}
 						$seen_events[$uid] = 1;
 						$switch['CAL'] 			= $cal;
 						$switch['START_DATE'] 	= $start_date;
