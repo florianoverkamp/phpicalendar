@@ -1,4 +1,8 @@
-NB: This is a patched version of phpicalendar 2.4 made by Faster IT GmbH.
+# Important - Read this first!
+
+## This is a fork of a fork of a really old package that was no longer maintained
+
+This is a patched version of phpicalendar 2.4 made by Faster IT GmbH.
 
 The site phpicalendar.net seems to be down for ages.
 The original software can be obtained still at https://sourceforge.net/projects/phpicalendar/ .
